@@ -5,7 +5,7 @@ create schema public;
 CREATE EXTENSION postgis;
 
 CREATE TABLE casa(
-	idCiudad SERIAL PRIMARY KEY,
+	idCasa SERIAL PRIMARY KEY,
 	numero VARCHAR(20),
 	figuraCs geometry(Polygon,4326)
 );
