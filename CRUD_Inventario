@@ -42,7 +42,7 @@ $$
 	-- Manejo de errores
 	EXCEPTION
 		WHEN OTHERS THEN
-			RAISE NOTICE 'Error al facturar'; 
+			RAISE NOTICE 'Error al leer Inventario'; 
 	END;
 $$;
 
