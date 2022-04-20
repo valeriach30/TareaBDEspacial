@@ -63,4 +63,3 @@ SELECT DistanciaLugares(1, 24, 0);
 SELECT DistanciaLugares(1, 2, 1); 
 -- Entre 1 comercio y 1 casa
 SELECT DistanciaLugares(1, 8, 2); 
-
