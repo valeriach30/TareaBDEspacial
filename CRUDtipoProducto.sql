@@ -11,7 +11,7 @@ $$
 		WHEN OTHERS THEN
 			RAISE NOTICE 'Error al insertar Tipo de Producto'; 
 	END
-$$
+$$;
 
 -- READ
 CREATE OR REPLACE FUNCTION LeerTipoProducto(inTipoProducto INT)

@@ -12,7 +12,7 @@ $$
 		WHEN OTHERS THEN
 			RAISE NOTICE 'Error al insertar inventario'; 
 	END;
-$$
+$$;
 
 -- Read Inventario
 -- Recibe como parametro el id de inventario

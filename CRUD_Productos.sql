@@ -10,9 +10,9 @@ $$
 	-- Manejo de errores
 	EXCEPTION
 		WHEN OTHERS THEN
-			RAISE NOTICE 'Error al insertar Tipo de Producto'; 
+			RAISE NOTICE 'Error al insertar Producto'; 
 	END
-$$
+$$;
 
 -- READ
 CREATE OR REPLACE FUNCTION LeerProducto(inProducto INT)
@@ -28,7 +28,7 @@ $$
 	-- Manejo de errores
 	EXCEPTION
 		WHEN OTHERS THEN
-			RAISE NOTICE 'Error al leer tipo Producto'; 
+			RAISE NOTICE 'Error al leer Producto'; 
 	END;
 $$;
 
@@ -40,13 +40,13 @@ AS
 $$
 	BEGIN
 		-- Modificar los atributos
-		UPDATE Productos
-		SET  productos.IdComercio = nuevoIdComercio ,
-		productos.IdTipoProducto = nuevoIdTipoProducto , productos.Nombre = nuevoNombre, productos.Precio = nuevoPrecio
-		WHERE productos.idProducto = inProd; 
+		UPDATE productos
+		SET  IdComercio = nuevoIdComercio ,IdTipoProducto = nuevoIdTipoProducto, 
+		Nombre = nuevoNombre, Precio = nuevoPrecio
+		WHERE idProducto = inProd; 
 	EXCEPTION
 		WHEN OTHERS THEN
-			RAISE NOTICE 'Error al modificar tipo de Producto'; 
+			RAISE NOTICE 'Error al modificar Producto'; 
 	END;
 $$;
 
@@ -57,7 +57,9 @@ CREATE OR REPLACE FUNCTION EliminarProducto(inProducto INT)
 AS
 $$
 	BEGIN
-		
+		-- Elimar del inventario
+		DELETE FROM inventario
+		WHERE idProducto = inProducto;
 		-- Eliminar de la tabla Producto
 		DELETE FROM Productos
 		WHERE idProducto = inProducto;
@@ -70,9 +72,9 @@ $$
 $$;
 
 ---- Pruebas
-SELECT insertarProducto(1,1,'XD',1000);
+SELECT insertarProducto(1,1,'XD', MONEY(1000));
 SELECT LeerProducto(10);
-SELECT modificarProducto(10, 2,2,'XDnt',2000);
+SELECT modificarProducto(10, 2,2,'XDnt',MONEY(2000));
 SELECT EliminarProducto(10);
 
-SELECT * FROM Producto;
+SELECT * FROM productos;
